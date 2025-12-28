@@ -1,0 +1,31 @@
+package ui.ft.ccit.faculty.transaksi.model;
+
+import java.io.Serializable;
+import java.util.Objects;
+
+public class DetailTransaksiId implements Serializable {
+    private String kodeTransaksi;
+    private String idBarang;
+
+    public DetailTransaksiId() {}
+
+    public DetailTransaksiId(String kodeTransaksi, String idBarang) {
+        this.kodeTransaksi = kodeTransaksi;
+        this.idBarang = idBarang;
+    }
+
+    // Wajib ada equals dan hashCode untuk Composite Key
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DetailTransaksiId that = (DetailTransaksiId) o;
+        return Objects.equals(kodeTransaksi, that.kodeTransaksi) &&
+               Objects.equals(idBarang, that.idBarang);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(kodeTransaksi, idBarang);
+    }
+}
